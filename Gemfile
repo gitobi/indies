@@ -21,6 +21,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'puma'
+
 gem 'factory_girl_rails'
 gem 'seed-fu'
 
