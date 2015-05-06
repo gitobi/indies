@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501141223) do
+ActiveRecord::Schema.define(version: 20150501141226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,12 +35,12 @@ ActiveRecord::Schema.define(version: 20150501141223) do
   end
 
   create_table "members", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "parent"
-    t.uuid     "child"
-    t.datetime "join"
+    t.uuid     "parent_id"
+    t.uuid     "child_id"
+    t.datetime "participate"
     t.datetime "leave"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "people", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
@@ -56,6 +56,9 @@ ActiveRecord::Schema.define(version: 20150501141223) do
     t.uuid     "role_id"
   end
 
+  create_table "projects", force: :cascade do |t|
+  end
+
   create_table "roles", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -66,6 +69,9 @@ ActiveRecord::Schema.define(version: 20150501141223) do
     t.string   "range"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
   end
 
   create_table "users", force: :cascade do |t|

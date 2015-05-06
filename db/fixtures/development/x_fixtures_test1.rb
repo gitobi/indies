@@ -16,7 +16,23 @@ Role.seed(
   {id: "11111111-1111-1111-1111-111111111113", name: "作曲"}
 )
 User.seed(
-  {scope_id: "11111111-1111-1111-1111-111111111111", account_id: "11111111-1111-1111-1111-111111111111", role_id: "11111111-1111-1111-1111-111111111111", name: "test_user_1", picture: "test_pict_1", comment: "test_comment_1", ditail: "test_ditail_1"},
-  {scope_id: "11111111-1111-1111-1111-111111111112", account_id: "11111111-1111-1111-1111-111111111112", role_id: "11111111-1111-1111-1111-111111111112", name: "test_user_2", picture: "test_pict_2", comment: "test_comment_2", ditail: "test_ditail_2"},
-  {scope_id: "11111111-1111-1111-1111-111111111113", account_id: "11111111-1111-1111-1111-111111111113", role_id: "11111111-1111-1111-1111-111111111113", name: "test_user_3", picture: "test_pict_3", comment: "test_comment_3", ditail: "test_ditail_3"}
+  {id: "11111111-1111-1111-1111-111111111111", scope_id: "11111111-1111-1111-1111-111111111111", account_id: "11111111-1111-1111-1111-111111111111", role_id: "11111111-1111-1111-1111-111111111111", name: "test_user_1", picture: "test_pict_1", comment: "test_comment_1", ditail: "test_ditail_1"},
+  {id: "11111111-1111-1111-1111-111111111112", scope_id: "11111111-1111-1111-1111-111111111112", account_id: "11111111-1111-1111-1111-111111111112", role_id: "11111111-1111-1111-1111-111111111112", name: "test_user_2", picture: "test_pict_2", comment: "test_comment_2", ditail: "test_ditail_2"},
+  {id: "11111111-1111-1111-1111-111111111113", scope_id: "11111111-1111-1111-1111-111111111113", account_id: "11111111-1111-1111-1111-111111111113", role_id: "11111111-1111-1111-1111-111111111113", name: "test_user_3", picture: "test_pict_3", comment: "test_comment_3", ditail: "test_ditail_3"}
+)
+Team.seed(
+  {id: "21111111-1111-1111-1111-111111111111", scope_id: "11111111-1111-1111-1111-111111111111", name: "test_team_1", picture: "test_pict_1", comment: "test_comment_1", ditail: "test_ditail_1"},
+  {id: "21111111-1111-1111-1111-111111111112", scope_id: "11111111-1111-1111-1111-111111111112", name: "test_team_2", picture: "test_pict_2", comment: "test_comment_2", ditail: "test_ditail_2"},
+  {id: "21111111-1111-1111-1111-111111111113", scope_id: "11111111-1111-1111-1111-111111111113", name: "test_team_3", picture: "test_pict_3", comment: "test_comment_3", ditail: "test_ditail_3"}
+)
+Project.seed(
+  {id: "31111111-1111-1111-1111-111111111111", scope_id: "11111111-1111-1111-1111-111111111111", name: "test_project_1", picture: "test_pict_1", comment: "test_comment_1", ditail: "test_ditail_1"},
+  {id: "31111111-1111-1111-1111-111111111112", scope_id: "11111111-1111-1111-1111-111111111112", name: "test_project_2", picture: "test_pict_2", comment: "test_comment_2", ditail: "test_ditail_2"},
+  {id: "31111111-1111-1111-1111-111111111113", scope_id: "11111111-1111-1111-1111-111111111113", name: "test_project_3", picture: "test_pict_3", comment: "test_comment_3", ditail: "test_ditail_3"}
+)
+Member.seed(
+  {parent_id: "21111111-1111-1111-1111-111111111111", child_id: "11111111-1111-1111-1111-111111111112"},
+  {parent_id: "21111111-1111-1111-1111-111111111111", child_id: "11111111-1111-1111-1111-111111111113"},
+  {parent_id: "31111111-1111-1111-1111-111111111111", child_id: "11111111-1111-1111-1111-111111111111"},
+  {parent_id: "31111111-1111-1111-1111-111111111111", child_id: "11111111-1111-1111-1111-111111111112"}
 )
