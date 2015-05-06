@@ -21,7 +21,7 @@ module Crudable
       model_class.extent_setup_columns(instance)
       return instance
     end
-    
+
     # update_attributes(args) を返却する
     # args より有効な値がセットされる
     def common_update(args)
@@ -37,20 +37,20 @@ module Crudable
     def self.filter_model_params(args)
       args.require(model_class.model_to_s_underscore.intern).permit(model_class.column_symbols)
     end
-    
+
     # where句に以下を含める
     #  application_id
     def self.extent_where_statements(where_statements={})
       cloned = where_statements.clone
-      cloned[:application_id] = get_application_id
+      # cloned[:application_id] = get_application_id
       cloned
     end
-    
+
     # モデルに、以下のカラムが存在した場合は、値をセットする
     #  application_id
     def self.extent_setup_columns(instance)
-      instance.application_id = get_application_id if instance.respond_to?("application_id")
+      # instance.application_id = get_application_id if instance.respond_to?("application_id")
     end
-    
+
   end
 end
