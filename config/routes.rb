@@ -2,6 +2,7 @@ require 'api_constraints'
 
 Rails.application.routes.draw do
   scope module: :v1, constraints: ApiConstraints.new(version: "1", default: true), defaults: { format: :html } do
+    resources :search, only: [:index, :show, :search]
     resources :displays, only: [:show]
     # scope :users do
     #   users get    ''                     => 'users#index',                                 as: :users_index
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
     #   put    ''                     => 'users#update',                                as: :users_update
     #   delete ''                     => 'users#destroy',                               as: :users_destroy
     # end
+    resources :projects
+    resources :teams
     resources :users
     resources :kanbans , :except => [:new, :edit]
   end

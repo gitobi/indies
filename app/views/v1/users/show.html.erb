@@ -1,4 +1,4 @@
-<h2> user info </h2>
+<h2>User</h2>
 <p>
 <ul>
   <li> <%= @user.id %> </li>
@@ -10,56 +10,76 @@
 </ul>
 </p>
 
-<h3> Projects </h3>
-<p>
-<table>
-  <tr>
-    <th>id</th>
-    <th>name</th>
-    <th>picture</th>
-    <th>created_at</th>
-    <th>updated_at</th>
-    <th></th>
-  </tr>
+<% items = @user.teams %>
+<% if items.present? %>
+  <h3>Teams</h3>
+  <p>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Picture</th>
+      <th>CreatedAt</th>
+      <th>UpdatedAt</th>
+      <th></th>
+    </tr>
 
-<% @user.projects.each do |member| %>
-  <tr>
-    <td> <%= member.id %>  </td>
-    <td> <%= member.type %> </td>
-    <td> <%= member.name %> </td>
-    <td> <%= member.picture %> </td>
-    <td> <%= member.created_at %> </td>
-    <td> <%= member.updated_at %> </li>
-  </tr>
+    <% items.each do |item| %>
+      <tr>
+        <td> <%= item.id %>  </td>
+        <td> <%= item.type %> </td>
+        <td> <%= item.name %> </td>
+        <td> <%= item.picture %> </td>
+        <td> <%= item.created_at %> </td>
+        <td> <%= item.updated_at %> </td>
+        <td> <%= link_to 'Show', item %></td>
+      </tr>
+    <% end %>
+  </table>
+  </p>
 <% end %>
-</table>
-</p>
 
+<% items = @user.team_projects %>
+<% if items.present? %>
+  <h3>Projects</h3>
+  <p>
+  <table>
+    <tr>
+      <th>TeamId</th>
+      <th>TeamName</th>
+      <th>Id</th>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Picture</th>
+      <th>CreatedAt</th>
+      <th>UpdatedAt</th>
+      <th></th>
+    </tr>
 
-<h3> Teams </h3>
-<p>
-<table>
-  <tr>
-    <th>id</th>
-    <th>name</th>
-    <th>picture</th>
-    <th>created_at</th>
-    <th>updated_at</th>
-    <th></th>
-  </tr>
-
-<% @user.teams.each do |member| %>
-  <tr>
-    <td> <%= member.id %>  </td>
-    <td> <%= member.type %> </td>
-    <td> <%= member.name %> </td>
-    <td> <%= member.picture %> </td>
-    <td> <%= member.created_at %> </td>
-    <td> <%= member.updated_at %> </li>
-  </tr>
+    <% items.each do |team, projects| %>
+      <% projects.each do |project| %>
+        <tr>
+          <% if team.present? %>
+            <td> <%= team.id %>  </td>
+            <td> <%= team.name %>  </td>
+          <% else %>
+            <td>-</td>
+            <td>-</td>
+          <% end %>
+          <td> <%= project.id %>  </td>
+          <td> <%= project.type %> </td>
+          <td> <%= project.name %> </td>
+          <td> <%= project.picture %> </td>
+          <td> <%= project.created_at %> </td>
+          <td> <%= project.updated_at %> </td>
+          <td> <%= link_to 'Show', project %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+  </p>
 <% end %>
-</table>
-</p>
 
 
 <br />
