@@ -22,10 +22,14 @@ class V1::SearchController < ApplicationController
   def search(search)
 
     if search
-      @items = Person.where(['name LIKE ?', "%#{search}%"])
+      @users = User.where(['name LIKE ?', "%#{search}%"])
+      @projects = Project.where(['name LIKE ?', "%#{search}%"])
+      @teams = Team.where(['name LIKE ?', "%#{search}%"])
 
     else
-      @items = Person.where(['name LIKE ?', "%#{search}%"])
+      @users = User.where(['name LIKE ?', "%#{search}%"])
+      @projects = Project.where(['name LIKE ?', "%#{search}%"])
+      @teams = Team.where(['name LIKE ?', "%#{search}%"])
 
     end
 

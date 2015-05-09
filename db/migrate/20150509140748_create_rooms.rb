@@ -1,7 +1,6 @@
-class CreatePeople < ActiveRecord::Migration
+class CreateRooms < ActiveRecord::Migration
   def change
-    create_table :people, id: :uuid do |t|
-      t.string :type
+    create_table :rooms, id: :uuid  do |t|
       t.uuid :scope_id
       t.string :name
       t.string :picture

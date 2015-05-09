@@ -1,7 +1,6 @@
 FactoryGirl.define do
-  factory :person do
-    type ""
-scope_id 1
+  factory :room do
+    scope_id ""
 name "MyString"
 picture "MyString"
 comment "MyString"

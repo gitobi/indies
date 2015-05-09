@@ -2,7 +2,6 @@
 <p>
 <ul>
   <li> <%= @team.id %> </li>
-  <li> <%= @team.type %> </li>
   <li> <%= @team.name %> </li>
   <li> <%= @team.picture %> </li>
   <li> <%= @team.created_at %> </li>
@@ -17,7 +16,6 @@
   <table>
     <tr>
       <th>Id</th>
-      <th>Type</th>
       <th>Name</th>
       <th>Picture</th>
       <th>CreatedAt</th>
@@ -28,7 +26,6 @@
     <% items.each do |item| %>
       <tr>
         <td> <%= item.id %>  </td>
-        <td> <%= item.type %> </td>
         <td> <%= item.name %> </td>
         <td> <%= item.picture %> </td>
         <td> <%= item.created_at %> </td>
@@ -47,7 +44,6 @@
   <table>
     <tr>
       <th>Id</th>
-      <th>Type</th>
       <th>Name</th>
       <th>Picture</th>
       <th>CreatedAt</th>
@@ -58,7 +54,6 @@
     <% items.each do |item| %>
       <tr>
         <td> <%= item.id %>  </td>
-        <td> <%= item.type %> </td>
         <td> <%= item.name %> </td>
         <td> <%= item.picture %> </td>
         <td> <%= item.created_at %> </td>

@@ -1,12 +1,19 @@
-class Project < Person
+class Project < BaseModel
+  has_many :relation_project_users
+  has_many :relation_project_teams
+  has_many :relation_room_project
 
-  def users
-    parent_members.select { |item| item.child.type == "User" }.map { |item| item.child }
-  end
+  has_many :users,  :through => :relation_project_users
+  has_many :teams,  :through => :relation_project_teams
+  has_many :roomes, :through => :relation_room_users
 
-  def teams
-    parent_members.select { |item| item.child.type == "Team" }.map { |item| item.child }
-  end
+  # def users
+  #   parent_members.select { |item| item.child.type == "User" }.map { |item| item.child }
+  # end
+
+  # def teams
+  #   parent_members.select { |item| item.child.type == "Team" }.map { |item| item.child }
+  # end
 
   def team_users
     hash = Hash.new

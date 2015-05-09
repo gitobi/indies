@@ -1,0 +1,2 @@
+class Message < BaseModel
+end

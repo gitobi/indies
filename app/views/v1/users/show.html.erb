@@ -2,7 +2,6 @@
 <p>
 <ul>
   <li> <%= @user.id %> </li>
-  <li> <%= @user.type %> </li>
   <li> <%= @user.name %> </li>
   <li> <%= @user.picture %> </li>
   <li> <%= @user.created_at %> </li>
@@ -17,7 +16,6 @@
   <table>
     <tr>
       <th>Id</th>
-      <th>Type</th>
       <th>Name</th>
       <th>Picture</th>
       <th>CreatedAt</th>
@@ -28,7 +26,6 @@
     <% items.each do |item| %>
       <tr>
         <td> <%= item.id %>  </td>
-        <td> <%= item.type %> </td>
         <td> <%= item.name %> </td>
         <td> <%= item.picture %> </td>
         <td> <%= item.created_at %> </td>
@@ -46,20 +43,25 @@
   <p>
   <table>
     <tr>
-      <th>TeamId</th>
-      <th>TeamName</th>
       <th>Id</th>
-      <th>Type</th>
       <th>Name</th>
       <th>Picture</th>
       <th>CreatedAt</th>
       <th>UpdatedAt</th>
       <th></th>
+      <th>TeamId</th>
+      <th>TeamName</th>
     </tr>
 
     <% items.each do |team, projects| %>
       <% projects.each do |project| %>
         <tr>
+          <td> <%= project.id %>  </td>
+          <td> <%= project.name %> </td>
+          <td> <%= project.picture %> </td>
+          <td> <%= project.created_at %> </td>
+          <td> <%= project.updated_at %> </td>
+          <td> <%= link_to 'Show', project %></td>
           <% if team.present? %>
             <td> <%= team.id %>  </td>
             <td> <%= team.name %>  </td>
@@ -67,13 +69,6 @@
             <td>-</td>
             <td>-</td>
           <% end %>
-          <td> <%= project.id %>  </td>
-          <td> <%= project.type %> </td>
-          <td> <%= project.name %> </td>
-          <td> <%= project.picture %> </td>
-          <td> <%= project.created_at %> </td>
-          <td> <%= project.updated_at %> </td>
-          <td> <%= link_to 'Show', project %></td>
         </tr>
       <% end %>
     <% end %>
