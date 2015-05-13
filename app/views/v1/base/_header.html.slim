@@ -1,0 +1,25 @@
+h1 Indies
+
+table
+  tr
+    td = link_to 'users',    users_path
+    td = link_to 'teams',    teams_path
+    td = link_to 'projects', projects_path
+    - if @user.present?
+      td = link_to @user.name, @user
+    - else
+      td = link_to 'login',    new_account_path
+
+
+table
+  form method='get' action='/search'
+    tr
+      td
+        input type='text' name='search'
+      td
+        input type='submit' value='search'
+
+table
+  tr
+    td = link_to 'New Team',    new_team_path
+    td = link_to 'New Project', new_project_path

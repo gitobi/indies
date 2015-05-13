@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
   include Jwtable
+  include Accountable
 
   Jbuilder.key_format camelize: :lower
   before_action :set_locale
   before_action :parse_jwt
+  before_action :check_account
 
   private
 
@@ -11,9 +13,13 @@ class ApplicationController < ActionController::Base
     # I18n.locale = http_accept_language.language_region_compatible_from(I18n.available_locales)
   end
 
+  def check_account
+    set_account
+  end
+
   def parse_jwt
-    set_application_id
-    BaseModel.set_application_id(@application_id)
+    # set_application_id
+    # BaseModel.set_application_id(@application_id)
   end
 
   def bad_request

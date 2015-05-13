@@ -24,9 +24,8 @@ module Restable
     end
 
     def new
-      # TODO カラム一覧でも返却する？
-      # てか、この書き方だと、 new が見つかりません て出る
-      bad_request
+      model_instance = new_model
+      common_new(model_instance)
     end
 
     def create
@@ -36,7 +35,7 @@ module Restable
         conflict_duplication_post_request
         return
       end
-      common_show model_instance
+      redirect_to action: 'show', id: model_instance.id
     end
 
     def edit
@@ -86,6 +85,14 @@ module Restable
     end
 
     def common_show(model_instance)
+      if model_instance.blank?
+        record_not_found
+      else
+        common_render model_instance
+      end
+    end
+
+    def common_new(model_instance)
       if model_instance.blank?
         record_not_found
       else

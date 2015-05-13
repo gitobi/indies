@@ -31,6 +31,11 @@ gem 'puma'
 gem 'factory_girl_rails'
 gem 'seed-fu'
 
+# templete engine
+gem 'slim-rails'
+gem 'simple_form'
+
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

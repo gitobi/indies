@@ -4,6 +4,10 @@ module Crudable
 
   included do
 
+    def self.common_find_by_id(id)
+      find_by(id: id)
+    end
+
     # where(args) を返却する
     def self.common_where(args={})
       where(model_class.extent_where_statements(args))
@@ -14,9 +18,13 @@ module Crudable
       find_by(model_class.extent_where_statements(args))
     end
 
+    def self.common_new
+      model_class.new
+    end
+
     # new(args) を返却する
     # args より有効な値、および、extent_setup_columns がセットされる
-    def self.common_new(args)
+    def self.common_create(args)
       instance = model_class.new(model_class.filter_model_params(args))
       model_class.extent_setup_columns(instance)
       return instance

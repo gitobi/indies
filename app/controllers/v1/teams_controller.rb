@@ -1,14 +1,17 @@
 class V1::TeamsController < V1::BaseController
 
-  def show_by_major_and_minor
-    model_instance = get_model(:major => params[:major], :minor => params[:minor])
-    common_show model_instance
+  def new
+      model_instance = new_model
+    model_instance.users << user
+      common_new(model_instance)
   end
 
-  def show_by_major_and_minor_within_kanban
-    @within_kanban = true
-    model_instance = get_model(:major => params[:major], :minor => params[:minor])
-    common_show model_instance
+  def create
+    result, model_instance = create_model(params)
+    model_instance.users << user
+    model_instance.save
+    redirect_to action: 'show', id: model_instance.id
+
   end
 
 end

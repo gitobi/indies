@@ -1,0 +1,8 @@
+h2 login
+
+= simple_form_for @account do |f|
+  = f.input :email, label: 'name or email'
+  = f.input :token, label: 'password'
+  = f.button :submit
+
+

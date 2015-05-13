@@ -22,14 +22,14 @@ class V1::SearchController < ApplicationController
   def search(search)
 
     if search
-      @users = User.where(['name LIKE ?', "%#{search}%"])
-      @projects = Project.where(['name LIKE ?', "%#{search}%"])
-      @teams = Team.where(['name LIKE ?', "%#{search}%"])
+      @users      = User.where(['name LIKE ?',    "%#{search}%"])
+      @projects   = Project.where(['name LIKE ?', "%#{search}%"])
+      @teams      = Team.where(['name LIKE ?',    "%#{search}%"])
 
     else
-      @users = User.where(['name LIKE ?', "%#{search}%"])
-      @projects = Project.where(['name LIKE ?', "%#{search}%"])
-      @teams = Team.where(['name LIKE ?', "%#{search}%"])
+      @users      = User.where(['name LIKE ?',    "%#{search}%"])
+      @projects   = Project.where(['name LIKE ?', "%#{search}%"])
+      @teams      = Team.where(['name LIKE ?',    "%#{search}%"])
 
     end
 

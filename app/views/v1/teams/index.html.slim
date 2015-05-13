@@ -1,0 +1,22 @@
+
+table
+  thead
+    tr
+      th id
+      th name
+      th picture
+      th created_at
+      th updated_at
+      th
+
+  tbody
+    - @teams.each do |team|
+      tr
+        td = team.id
+        td = team.name
+        td = team.picture
+        td = team.created_at
+        td = team.updated_at
+        td = link_to 'Show', team
+
+br

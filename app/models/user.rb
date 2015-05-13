@@ -1,5 +1,7 @@
 class User < BaseModel
 
+  belongs_to :accounts
+
   has_many :relation_team_users
   has_many :relation_project_users
   has_many :relation_room_users
@@ -16,6 +18,7 @@ class User < BaseModel
   # def projects
   #   child_members.select { |item| item.parent.type == "Project" }.map { |item| item.parent }
   # end
+
 
   def team_projects
     hash = Hash.new
