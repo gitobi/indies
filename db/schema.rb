@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20150509140752) do
   enable_extension "uuid-ossp"
 
   create_table "accounts", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
     t.string   "email"
     t.string   "phone"
     t.string   "token"

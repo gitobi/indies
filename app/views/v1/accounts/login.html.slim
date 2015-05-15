@@ -1,8 +1,12 @@
 h2 login
 
+- flash.each do |key, value|
+  = content_tag(:div, value, class: "#{key}")
+
+/ TODO oauth login
 = simple_form_for @account, :url => accounts_logedin_path do |f|
-  = f.input :email, label: 'name or email'
-  = f.input :token, label: 'password'
+  = f.input :provider, label: 'provider'
+  = f.input :uid, label: 'uid'
   = f.button :submit
 
 

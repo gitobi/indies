@@ -1,7 +1,7 @@
 Account.seed(
-  {id: "11111111-1111-1111-1111-111111111111", email: "test1@gmail.com", phone: "000-0000-0001"},
-  {id: "11111111-1111-1111-1111-111111111112", email: "test2@gmail.com", phone: "000-0000-0002"},
-  {id: "11111111-1111-1111-1111-111111111113", email: "test3@gmail.com", phone: "000-0000-0003"}
+  {id: "11111111-1111-1111-1111-111111111111", provider: "gitobi", uid: "a", email: "test1@gmail.com", phone: "000-0000-0001"},
+  {id: "11111111-1111-1111-1111-111111111112", provider: "gitobi", uid: "b", email: "test2@gmail.com", phone: "000-0000-0002"},
+  {id: "11111111-1111-1111-1111-111111111113", provider: "gitobi", uid: "c", email: "test3@gmail.com", phone: "000-0000-0003"}
 )
 Scope.seed(
   {id: "11111111-1111-1111-1111-111111111111", range: "public"},

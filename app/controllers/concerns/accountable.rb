@@ -2,33 +2,58 @@ module Accountable
   extend ActiveSupport::Concern
   included do
 
-    attr_reader :logedin
-    attr_reader :account
-    attr_reader :user
-    attr_reader :user_id
+    attr_reader :logedin_account_id
+    attr_reader :logedin_account_token
+    attr_reader :logedin_user
 
     private
 
-    def set_account
-      user_id = session[:user_id]
-      if user_id.blank?
+    def set_logedin_infos
+      if session[:logedin_account_id].blank?
+        return
+      end
+
+      find_params = {}
+      find_params[:id]    = session[:logedin_account_id]
+      find_params[:token] = session[:logedin_account_token]
+
+      account = Account.common_find_by(find_params)
+
+      if account.blank?
+        @logedin_account_id     = nil
+        @logedin_account_token  = nil
+        @logedin_user           = nil
 
       else
-        @user = User.common_find_by_id(user_id)
+        @logedin_account_id     = account.id
+        @logedin_account_token  = account.token
+        @logedin_user           = account.user
+
       end
     end
 
-    def check_account
-      check_account
-      @jwt = request.headers[:Authorization]
-      if @jwt.blank?
-        # FIXME unauthorized を呼び出す。
-        # unauthorized
-        @application_id = DEBUG_APPLICATION_ID
+    def login_account(provider, uid)
+      account = Account.authenticate(provider, uid)
+      if account.blank?
+        return false
+
       else
-        # TODO JWT から application_id を取得
-        @application_id = @jwt
+        token = SecureRandom.uuid
+        account.token = token
+        account.save!
+        session[:logedin_account_id] = account.id
+        session[:logedin_account_token] = account.token
+
+        set_logedin_infos
+        return true
       end
+
+    end
+
+    def logout_account
+      reset_session
+      set_logedin_infos
+
     end
 
   end

@@ -35,6 +35,10 @@ gem 'seed-fu'
 gem 'slim-rails'
 gem 'simple_form'
 
+# omniauth
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'settingslogic'
 
 group :development, :test do
   gem 'byebug'
@@ -48,6 +52,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
+  gem 'rails-footnotes'
 end
 
 group :production do

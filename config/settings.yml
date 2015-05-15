@@ -1,0 +1,15 @@
+
+defaults: &defaults
+
+development:
+  <<: *defaults
+  gitobi:
+    consumer_key: d7bd1f36e3747f28e00aa53bcc6db7eede14d4294d7320d648f82df700781dfc
+    consumer_secret: 7e4e5811c94fc142f8f2bf97af436fd6a22c27140c66adf1a450c27aa35fb5ae
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+

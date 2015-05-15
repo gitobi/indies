@@ -1,12 +1,12 @@
-h1 Indies
+h1 = link_to 'Indies' , root_path
 
 table
   tr
     td = link_to 'users',    users_path
     td = link_to 'teams',    teams_path
     td = link_to 'projects', projects_path
-    - if @user.present?
-      td = link_to @user.name, @user
+    - if @logedin_user.present?
+      td = link_to @logedin_user.name, @logedin_user
       td = link_to 'logout', accounts_logout_path
     - else
       td = link_to 'login',  accounts_login_path

@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_account
-    set_account
+    set_logedin_infos
   end
 
   def parse_jwt

@@ -6,23 +6,21 @@ class V1::AccountsController < V1::BaseController
 
   # login
   def logedin
-    account = Account.authenticate(params[:account][:email], params[:account][:token])
-
-    if account.blank?
-      record_not_found
+    if login_account(params[:account][:provider], params[:account][:uid])
+      redirect_to controller: 'users', action: 'show', id: @logedin_user.id
 
     else
-      # ユーザーIDをセッションに保存する
-      session[:user_id] = account.user.id
-      redirect_to controller: 'users', action: 'show', id: account.user.id
+      flash[:error] = "failed login"
+      redirect_to accounts_login_path
+
     end
   end
 
   # logout
   def logout
-    p 'logout!!'
-    session[:user_id] = nil
-    redirect_to '/'
+    p 'logout!!!'
+    logout_account
+    redirect_to root_path
   end
 
 end
