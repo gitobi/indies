@@ -8,6 +8,6 @@ html
   = csrf_meta_tags
 
   body
-    = render partial: 'v1/base/header'
-    = render partial: 'v1/base/container'
-    = render partial: 'v1/base/footer'
+    = render partial: "#{partial_view_directory}/header"
+    = render partial: "#{partial_view_directory}/container"
+    = render partial: "#{partial_view_directory}/footer"

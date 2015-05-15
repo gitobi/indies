@@ -1,0 +1,20 @@
+
+- if users.present?
+  table
+    thead
+      tr
+        th id
+        th name
+        th picture
+        th created_at
+        th updated_at
+        th
+    tbody
+      - users.each do |user|
+        tr
+          td = user.id
+          td = user.name
+          td = user.picture
+          td = user.created_at
+          td = user.updated_at
+          td = link_to 'Show', user

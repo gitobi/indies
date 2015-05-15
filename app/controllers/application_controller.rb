@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :parse_jwt
   before_action :check_account
+  before_action :view_versioning
 
   private
 
@@ -20,6 +21,10 @@ class ApplicationController < ActionController::Base
   def parse_jwt
     # set_application_id
     # BaseModel.set_application_id(@application_id)
+  end
+
+  def view_versioning
+    @view_version = "v1"
   end
 
   def bad_request

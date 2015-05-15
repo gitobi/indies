@@ -1,0 +1,10 @@
+ul
+  li = project.id
+  li = project.name
+  li = project.picture
+  li = project.created_at
+  li = project.updated_at
+
+- if team_users.present?
+  h3 Members
+  = share_render('index_team_users', {team_users: team_users})

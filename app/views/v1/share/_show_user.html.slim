@@ -1,0 +1,14 @@
+ul
+  li = user.id
+  li = user.name
+  li = user.picture
+  li = user.created_at
+  li = user.updated_at
+
+- if teams.present?
+  h3 Teams
+  = share_render('index_teams', {teams: teams})
+
+- if team_projects.present?
+  h3 Projects
+  = share_render('index_team_projects', {team_projects: team_projects})
