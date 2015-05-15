@@ -2,7 +2,20 @@ require 'api_constraints'
 
 Rails.application.routes.draw do
   scope module: :v1, constraints: ApiConstraints.new(version: "1", default: true), defaults: { format: :html } do
-    resources :accounts, only: [:new, :create]
+    root :to => 'root#index'
+
+    namespace :accounts do
+        scope :login do
+            get '' => :'login', as: :login
+        end
+        scope :logedin do
+            post '' => :'logedin', as: :logedin
+        end
+        scope :logout do
+            get '' => :'logout', as: :logout
+        end
+    end
+
     resources :search, only: [:index, :show, :search]
     # scope :users do
     #   users get    ''                     => 'users#index',                                 as: :users_index

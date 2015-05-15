@@ -7,8 +7,9 @@ table
     td = link_to 'projects', projects_path
     - if @user.present?
       td = link_to @user.name, @user
+      td = link_to 'logout', accounts_logout_path
     - else
-      td = link_to 'login',    new_account_path
+      td = link_to 'login',  accounts_login_path
 
 
 table

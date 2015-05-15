@@ -1,8 +1,11 @@
 class V1::AccountsController < V1::BaseController
 
-  # login
-  def create
+  def login
+    new
+  end
 
+  # login
+  def logedin
     account = Account.authenticate(params[:account][:email], params[:account][:token])
 
     if account.blank?
@@ -13,6 +16,13 @@ class V1::AccountsController < V1::BaseController
       session[:user_id] = account.user.id
       redirect_to controller: 'users', action: 'show', id: account.user.id
     end
+  end
+
+  # logout
+  def logout
+    p 'logout!!'
+    session[:user_id] = nil
+    redirect_to '/'
   end
 
 end
