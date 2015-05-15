@@ -5,10 +5,10 @@ ul
   li = team.created_at
   li = team.updated_at
 
-- if users.present?
+- if local_assigns.has_key? :users
   h3 Members
   = share_render('index_users', {users: users})
 
-- if projects.present?
+- if local_assigns.has_key? :projects
   h3 Projects
   = share_render('index_projects', {projects: projects})

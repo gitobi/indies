@@ -1,20 +1,18 @@
 
-- if local_assigns.has_key? :projects
+- if (local_assigns.has_key? :rooms) && (rooms.present?)
   table
     thead
       tr
         th id
         th name
-        th picture
         th created_at
         th updated_at
         th
     tbody
-      - projects.each do |item|
+      - rooms.each do |item|
         tr
           td = item.id
           td = item.name
-          td = item.picture
           td = item.created_at
           td = item.updated_at
           td = link_to 'Show', item

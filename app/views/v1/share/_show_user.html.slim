@@ -5,10 +5,14 @@ ul
   li = user.created_at
   li = user.updated_at
 
-- if teams.present?
+- if (local_assigns.has_key? :rooms) && (rooms.present?)
+  h3 Rooms
+  = share_render('index_rooms', {rooms: rooms})
+
+- if (local_assigns.has_key? :teams) && (teams.present?)
   h3 Teams
   = share_render('index_teams', {teams: teams})
 
-- if team_projects.present?
+- if (local_assigns.has_key? :projects) && (projects.present?)
   h3 Projects
-  = share_render('index_team_projects', {team_projects: team_projects})
+  = share_render('index_projects', {projects: projects})

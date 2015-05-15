@@ -1,14 +1,18 @@
 class User < BaseModel
 
-  belongs_to :accounts
+  belongs_to :account
 
+  has_many :messages, -> { includes [:user, :room, :team, :project] }
+
+  has_many :receive_messages, :as => :messageable
+
+  has_many :relation_room_users
   has_many :relation_team_users
   has_many :relation_project_users
-  has_many :relation_room_users
 
+  has_many :rooms,    :through => :relation_room_users
   has_many :teams,    :through => :relation_team_users
   has_many :projects, :through => :relation_project_users
-  has_many :roomes,   :through => :relation_room_users
 
 
   # def teams

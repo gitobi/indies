@@ -8,7 +8,7 @@ module Modelable
     # TODO params[:id] が uuid 形式であるかのチェックが必要
     # 結果は、戻り値で返却 および @foo_bar に格納される
     def get_model_by_id
-      set_model get_model({:id => params[:id]})
+      set_model @model_class.common_find(params[:id])
     end
 
     # @model_class#common_find_by(args) を行う

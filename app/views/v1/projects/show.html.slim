@@ -1,2 +1,5 @@
 
-= share_render('show_project', {project: @project, team_users: @project.team_users})
+= share_render('show_project', {project: @project, users: @project.users})
+
+h2 messages
+= share_render('index_messages', {messages: @project.messages})

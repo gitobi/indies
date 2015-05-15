@@ -1,4 +1,4 @@
-class V1::TeamsController < V1::BaseController
+class V1::RoomsController < V1::BaseController
 
   def new
     model_instance = new_model

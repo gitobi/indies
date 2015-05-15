@@ -3,6 +3,7 @@ class CreateRelationTeamUsers < ActiveRecord::Migration
     create_table :relation_team_users, id: :uuid do |t|
       t.uuid :team_id
       t.uuid :user_id
+      t.uuid :authority_id
       t.datetime :joined
       t.datetime :leave
 

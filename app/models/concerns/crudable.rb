@@ -4,8 +4,8 @@ module Crudable
 
   included do
 
-    def self.common_find_by_id(id)
-      find_by(id: id)
+    def self.common_find(id)
+      find(id)
     end
 
     # where(args) を返却する

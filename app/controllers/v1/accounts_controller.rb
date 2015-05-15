@@ -18,7 +18,6 @@ class V1::AccountsController < V1::BaseController
 
   # logout
   def logout
-    p 'logout!!!'
     logout_account
     redirect_to root_path
   end

@@ -1,11 +1,10 @@
 class Project < BaseModel
-  has_many :relation_project_users
-  has_many :relation_project_teams
-  has_many :relation_room_project
 
-  has_many :users,  :through => :relation_project_users
-  has_many :teams,  :through => :relation_project_teams
-  has_many :roomes, :through => :relation_room_users
+  has_many :relation_project_users   , -> { includes [:user, :room, :team, :project] }
+  has_many :relation_project_messages , -> { includes [:user, :room, :team, :project] }
+
+  has_many :users,    :through => :relation_project_users
+  has_many :messages, :through => :relation_project_messages
 
   # def users
   #   parent_members.select { |item| item.child.type == "User" }.map { |item| item.child }

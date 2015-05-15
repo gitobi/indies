@@ -53,6 +53,7 @@ group :development do
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
   gem 'rails-footnotes'
+  gem "bullet"
 end
 
 group :production do

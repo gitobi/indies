@@ -26,9 +26,10 @@ Rails.application.routes.draw do
     #   put    ''                     => 'users#update',                                as: :users_update
     #   delete ''                     => 'users#destroy',                               as: :users_destroy
     # end
-    resources :projects
-    resources :teams
+
     resources :users
-    resources :kanbans , :except => [:new, :edit]
+    resources :room
+    resources :teams
+    resources :projects
   end
 end

@@ -8,6 +8,19 @@ module Accountable
 
     private
 
+
+    def logedin?
+      nil != @logedin_account_id
+    end
+
+    def current_user?
+      unless logedin?
+        return false
+      end
+
+      params[:id] == @logedin_user.id
+    end
+
     def set_logedin_infos
       if session[:logedin_account_id].blank?
         return
@@ -20,6 +33,8 @@ module Accountable
       account = Account.common_find_by(find_params)
 
       if account.blank?
+        session[:logedin_account_id]    = nil
+        session[:logedin_account_token] = nil
         @logedin_account_id     = nil
         @logedin_account_token  = nil
         @logedin_user           = nil
@@ -51,7 +66,8 @@ module Accountable
     end
 
     def logout_account
-      reset_session
+      session[:logedin_account_id]    = nil
+      session[:logedin_account_token] = nil
       set_logedin_infos
 
     end
