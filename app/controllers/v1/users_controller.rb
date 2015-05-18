@@ -7,7 +7,7 @@ class V1::UsersController < V1::BaseController
     end
 
     user_id = params[:id]
-    @user = User.preload([:rooms, :teams, :projects]).find(user_id)
+    @user = User.find(user_id)
     @messages = Message.preload([:user, :room, :team, :project]).where({user_id: user_id})
     model_instance = @user
 
