@@ -1,5 +1,6 @@
 
-= share_render('show_user', {user: @user, rooms: @user.rooms, teams: @user.teams, projects: @user.projects})
+= share_render('show_user', {user: @user, teams: @user.teams, projects: @user.projects})
 
-h2 messages
-= share_render('index_messages', {messages: @messages})
+- if defined?(@timeline)
+  h2 timeline
+  = share_render('index_timeline', {timeline: @timeline})

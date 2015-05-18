@@ -46,4 +46,6 @@ Rails.application.configure do
     Bullet.console = true # ブラウザのコンソールログに記録
     Bullet.rails_logger = true # Railsログに出力
   end
+  config.logger = Logger.new(config.paths["log"].first)
+  config.logger.formatter = Logger::Formatter.new
 end

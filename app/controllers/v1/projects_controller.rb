@@ -1,13 +1,21 @@
 class V1::ProjectsController < V1::BaseController
 
-  def show_by_major_and_minor
-    model_instance = get_model(:major => params[:major], :minor => params[:minor])
-    common_show model_instance
-  end
+  def show
 
-  def show_by_major_and_minor_within_kanban
-    @within_kanban = true
-    model_instance = get_model(:major => params[:major], :minor => params[:minor])
+    model_instance = get_model({id: params[:id]})
+    unless contains_current_user?(@project)
+      super
+      return
+    end
+
+    @project = Project.preload(:users).find(params[:id])
+    @timeline = Timeline.new
+    @timeline.add_project(@project)
+
+    @new_message = ProjectMessage.new
+    @new_message.user = @logedin_user
+    @new_message.project = @project
+
     common_show model_instance
   end
 

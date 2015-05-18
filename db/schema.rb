@@ -42,7 +42,8 @@ ActiveRecord::Schema.define(version: 20150509140847) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+  create_table "project_messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "project_id"
     t.uuid     "user_id"
     t.string   "text"
     t.datetime "created_at", null: false
@@ -59,13 +60,6 @@ ActiveRecord::Schema.define(version: 20150509140847) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "relation_project_messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "project_id"
-    t.uuid     "message_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "relation_project_users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "project_id"
     t.uuid     "user_id"
@@ -74,31 +68,6 @@ ActiveRecord::Schema.define(version: 20150509140847) do
     t.datetime "leave"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
-
-  create_table "relation_room_messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "user_id"
-    t.uuid     "room_id"
-    t.uuid     "message_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "relation_room_users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "room_id"
-    t.uuid     "user_id"
-    t.uuid     "authority_id"
-    t.datetime "joined"
-    t.datetime "leave"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  create_table "relation_team_messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "team_id"
-    t.uuid     "message_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "relation_team_users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
@@ -117,15 +86,16 @@ ActiveRecord::Schema.define(version: 20150509140847) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "rooms", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "scope_id"
+  create_table "scopes", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "scopes", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "name"
+  create_table "team_messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "team_id"
+    t.uuid     "user_id"
+    t.string   "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

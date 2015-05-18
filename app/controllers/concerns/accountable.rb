@@ -13,12 +13,22 @@ module Accountable
       nil != @logedin_account_id
     end
 
-    def current_user?
+    def current_user?(user=nil)
       unless logedin?
         return false
       end
 
-      params[:id] == @logedin_user.id
+      user_id = nil != user ? user.id : params[:id]
+      user_id == @logedin_user.id
+    end
+
+    def contains_current_user?(container)
+      container.users.each do |user|
+        if current_user?(user)
+          return true
+        end
+      end
+      return false
     end
 
     def set_logedin_infos

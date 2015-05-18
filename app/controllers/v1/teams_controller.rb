@@ -14,4 +14,26 @@ class V1::TeamsController < V1::BaseController
 
   end
 
+
+
+  def show
+
+    model_instance = get_model({id: params[:id]})
+    unless contains_current_user?(@team)
+      super
+      return
+    end
+
+    @team = Team.preload(:users).find(params[:id])
+    @timeline = Timeline.new
+    @timeline.add_team(@team)
+
+    @new_message = TeamMessage.new
+    @new_message.user = @logedin_user
+    @new_message.team = @team
+
+    common_show model_instance
+  end
+
+
 end

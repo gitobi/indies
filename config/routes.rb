@@ -31,5 +31,7 @@ Rails.application.routes.draw do
     resources :room
     resources :teams
     resources :projects
+    resources :project_messages
+    resources :team_messages
   end
 end
