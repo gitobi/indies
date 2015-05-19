@@ -1,12 +1,13 @@
 h2 login
 
-- flash.each do |key, value|
-  = content_tag(:div, value, class: "#{key}")
+div class="col-md-3 well bs-component"
+  - flash.each do |key, value|
+    = content_tag(:div, value, class: "#{key}")
 
-/ TODO oauth login
-= simple_form_for @account, :url => accounts_logedin_path do |f|
-  = f.input :provider, label: 'provider'
-  = f.input :uid, label: 'uid'
-  = f.button :submit
+  / TODO oauth login
+  = simple_form_for(@account, url: accounts_logedin_path, html: { class: 'form-horizontal' }) do |form|
+    = form.input :provider, label: 'provider', placeholder: 'gitobi'
+    = form.input :uid, label: 'uid', placeholder: 'a'
+    = form.button :submit, 'login'
 
 
