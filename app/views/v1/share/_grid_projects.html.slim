@@ -1,0 +1,19 @@
+
+- if local_assigns.has_key? :projects
+  - index = 0
+  div class="grid-projects"
+    <div class="row">
+    - projects.each do |item|
+      - index = index + 1
+      - if 0 == (index % 3)
+        </div>
+        <div class="row">
+
+      div class="col-md-1"
+        = link_to item do
+          = item.name
+          = image_tag 'default-placeholder.png', alt: item.name, size: '96x96', class: 'thumbnail'
+
+  - if 0 != (index %3)
+    </div>
+
