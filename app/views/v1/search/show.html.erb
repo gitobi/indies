@@ -1,0 +1,34 @@
+<h2>Search</h2>
+<% items = @items %>
+<% if items.present? %>
+  <p>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Picture</th>
+      <th>CreatedAt</th>
+      <th>UpdatedAt</th>
+      <th></th>
+    </tr>
+
+    <% items.each do |item| %>
+      <tr>
+        <td> <%= item.id %>  </td>
+        <td> <%= item.type %> </td>
+        <td> <%= item.name %> </td>
+        <td> <%= item.picture %> </td>
+        <td> <%= item.created_at %> </td>
+        <td> <%= item.updated_at %> </td>
+        <td> <%= link_to 'Show', item %></td>
+      </tr>
+    <% end %>
+  </table>
+  </p>
+<% end %>
+
+<br />
+
+
+

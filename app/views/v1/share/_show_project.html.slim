@@ -1,0 +1,10 @@
+ul
+  li = project.id
+  li = project.name
+  li = project.picture
+  li = project.created_at
+  li = project.updated_at
+
+- if local_assigns.has_key? :users
+  h3 Members
+  = share_render('index_users', {users: users})

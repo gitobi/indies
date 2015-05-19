@@ -6,9 +6,9 @@ module Jwtable
     attr_reader :user_id
     attr_reader :publisher
     attr_reader :debug_application_id
-  
+
     DEBUG_APPLICATION_ID = "11111111-1111-1111-1111-111111111111"
-  
+
     private
 
     # FIXME HttpHeader の JWT から application_id を取得するように修正要
@@ -25,7 +25,7 @@ module Jwtable
         @application_id = @jwt
       end
     end
-    
+
   end
 end
 

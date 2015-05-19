@@ -1,0 +1,14 @@
+
+= share_render('show_project', {project: @project, users: @project.users})
+
+- if defined?(@timeline)
+  h2 timeline
+
+  - if defined?(@new_message)
+    = simple_form_for @new_message do |f|
+      = f.input :user_id    , { as: :hidden }
+      = f.input :project_id , { as: :hidden }
+      = f.input :text
+      = f.button :submit
+
+  = share_render('index_timeline', {timeline: @timeline})

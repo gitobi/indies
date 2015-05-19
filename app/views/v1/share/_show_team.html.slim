@@ -1,0 +1,14 @@
+ul
+  li = team.id
+  li = team.name
+  li = team.picture
+  li = team.created_at
+  li = team.updated_at
+
+- if local_assigns.has_key? :users
+  h3 Members
+  = share_render('index_users', {users: users})
+
+- if local_assigns.has_key? :projects
+  h3 Projects
+  = share_render('index_projects', {projects: projects})

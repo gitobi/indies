@@ -1,3 +1,32 @@
 @import 'normalize-rails';
 @import 'bourbon';
 @import 'neat';
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "united";
+
+/* United
+ * Bootswatch
+ *= require_self
+ *= require united/loader
+ *= require united/bootswatch
+*/
+
+$color-base:#fefefe;
+$color-sub:#333333;
+$color-key:#ff8a8a;
+$color-border:#dedede;
+
+$fontsize-base:16px;
+$fontsize-title:30px;
+
+/* SCSS */
+body {
+  // background-color: $color-base;
+  // font-size: $fontsize-base;
+  padding-top: 70px;
+}
+
+// table,th,td {
+//   border: 1px $color_border solid;
+// }

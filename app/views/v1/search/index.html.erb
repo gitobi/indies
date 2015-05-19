@@ -1,0 +1,92 @@
+<h2>Search</h2>
+<h3>Users</h3>
+<% items = @users %>
+<% if items.present? %>
+  <p>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Picture</th>
+      <th>CreatedAt</th>
+      <th>UpdatedAt</th>
+      <th></th>
+    </tr>
+
+    <% items.each do |item| %>
+      <tr>
+        <td> <%= item.id %>  </td>
+        <td> <%= item.name %> </td>
+        <td> <%= item.picture %> </td>
+        <td> <%= item.created_at %> </td>
+        <td> <%= item.updated_at %> </td>
+        <td> <%= link_to 'Show', item %></td>
+
+      </tr>
+    <% end %>
+  </table>
+  </p>
+<% end %>
+
+<h3>Teams</h3>
+<% items = @teams %>
+<% if items.present? %>
+  <p>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Picture</th>
+      <th>CreatedAt</th>
+      <th>UpdatedAt</th>
+      <th></th>
+    </tr>
+
+    <% items.each do |item| %>
+      <tr>
+        <td> <%= item.id %>  </td>
+        <td> <%= item.name %> </td>
+        <td> <%= item.picture %> </td>
+        <td> <%= item.created_at %> </td>
+        <td> <%= item.updated_at %> </td>
+        <td> <%= link_to 'Show', item %></td>
+
+      </tr>
+    <% end %>
+  </table>
+  </p>
+<% end %>
+
+<h3>Projects</h3>
+<% items = @projects %>
+<% if items.present? %>
+  <p>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Picture</th>
+      <th>CreatedAt</th>
+      <th>UpdatedAt</th>
+      <th></th>
+    </tr>
+
+    <% items.each do |item| %>
+      <tr>
+        <td> <%= item.id %>  </td>
+        <td> <%= item.name %> </td>
+        <td> <%= item.picture %> </td>
+        <td> <%= item.created_at %> </td>
+        <td> <%= item.updated_at %> </td>
+        <td> <%= link_to 'Show', item %></td>
+
+      </tr>
+    <% end %>
+  </table>
+  </p>
+<% end %>
+
+<br />
+
+
+

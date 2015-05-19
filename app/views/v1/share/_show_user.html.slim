@@ -1,0 +1,14 @@
+
+div class="row"
+  div class="col-md-1"
+    = link_to user do
+      = user.name
+      = image_tag 'default-placeholder.png', alt: user.name, size: '96x96', class: 'thumbnail'
+
+- if (local_assigns.has_key? :teams) && (teams.present?)
+  h5 Teams
+  = share_render('grid_teams', {teams: teams})
+
+- if (local_assigns.has_key? :projects) && (projects.present?)
+  h5 Projects
+  = share_render('grid_projects', {projects: projects})

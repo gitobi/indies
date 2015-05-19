@@ -1,0 +1,26 @@
+- if local_assigns.has_key? :messages
+  table
+    thead
+      tr
+        th from
+        th text
+        th updated_at
+        th to
+    tbody
+      - messages.each do |item|
+        tr
+          td = link_to item.user.name, item.user
+          td = item.text
+          td = item.updated_at
+
+          - if item.room.present?
+            - to_item = item.room
+          - elsif item.team.present?
+            - to_item = item.team
+          - elsif item.project.present?
+            - to_item = item.project
+
+          - if defined?(to_item)
+            td = link_to to_item.name, to_item
+          - else
+            td -

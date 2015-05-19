@@ -7,8 +7,6 @@ gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -25,11 +23,33 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'normalize-rails'
 gem 'bourbon'
 gem 'neat'
-
+gem 'slim-rails'
+gem 'simple_form'
 gem 'puma'
 
+# bootstrap
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+
+# bootstrap theme
+# See https://github.com/rails/execjs#readme for more supported runtimes
+gem 'therubyracer', platforms: :ruby
+gem 'twitter-bootswatch-rails', '~> 3.1.1'
+gem 'twitter-bootswatch-rails-helpers'
+gem 'execjs'
+gem 'less-rails'
+#bin/rails g bootswatch:install united
+#bin/rails g bootswatch:import united
+#bin/rails g bootswatch:layout united
+
+# testing
 gem 'factory_girl_rails'
 gem 'seed-fu'
+
+# omniauth
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'settingslogic'
 
 group :development, :test do
   gem 'byebug'
@@ -43,6 +63,8 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
+  gem 'rails-footnotes'
+  gem "bullet"
 end
 
 group :production do

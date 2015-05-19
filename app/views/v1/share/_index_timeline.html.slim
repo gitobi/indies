@@ -1,0 +1,24 @@
+- if local_assigns.has_key? :timeline
+  table class="table table-striped"
+    thead
+      tr
+        th from
+        th text
+        th updated_at
+        th to
+    tbody
+      - timeline.messages.each do |item|
+        tr
+          td = link_to item.user.name, item.user
+          td = item.text
+          td = item.updated_at
+
+          - if defined? item.team
+            - to_item = item.team
+          - elsif defined? item.project
+            - to_item = item.project
+
+          - if defined?(to_item)
+            td = link_to to_item.name, to_item
+          - else
+            td -

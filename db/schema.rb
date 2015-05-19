@@ -11,16 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501141223) do
+ActiveRecord::Schema.define(version: 20150509140847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
   create_table "accounts", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "mail"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "email"
     t.string   "phone"
     t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "authorities", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,17 +42,15 @@ ActiveRecord::Schema.define(version: 20150501141223) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "members", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "parent"
-    t.uuid     "child"
-    t.datetime "join"
-    t.datetime "leave"
+  create_table "project_messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "project_id"
+    t.uuid     "user_id"
+    t.string   "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "people", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "type"
+  create_table "projects", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "scope_id"
     t.string   "name"
     t.string   "picture"
@@ -52,8 +58,26 @@ ActiveRecord::Schema.define(version: 20150501141223) do
     t.string   "ditail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid     "account_id"
-    t.uuid     "role_id"
+  end
+
+  create_table "relation_project_users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "project_id"
+    t.uuid     "user_id"
+    t.uuid     "authority_id"
+    t.datetime "joined"
+    t.datetime "leave"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "relation_team_users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "team_id"
+    t.uuid     "user_id"
+    t.uuid     "authority_id"
+    t.datetime "joined"
+    t.datetime "leave"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "roles", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
@@ -63,12 +87,39 @@ ActiveRecord::Schema.define(version: 20150501141223) do
   end
 
   create_table "scopes", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "range"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "team_messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "team_id"
+    t.uuid     "user_id"
+    t.string   "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "scope_id"
+    t.string   "name"
+    t.string   "picture"
+    t.string   "comment"
+    t.string   "ditail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "account_id"
+    t.uuid     "role_id"
+    t.uuid     "scope_id"
+    t.string   "name"
+    t.string   "picture"
+    t.string   "comment"
+    t.string   "ditail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

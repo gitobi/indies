@@ -1,0 +1,11 @@
+h2 Create Projects
+
+- @project.users.each do |user|
+  p = user.name
+
+= simple_form_for @project do |f|
+  = f.input :name
+  = f.input :picture
+  = f.button :submit
+
+

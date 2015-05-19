@@ -1,0 +1,29 @@
+
+- if team_projects.present?
+  table
+    thead
+      tr
+        th Id
+        th Name
+        th Picture
+        th CreatedAt
+        th UpdatedAt
+        th
+        th TeamId
+        th TeamName
+    tbody
+      - team_projects.each do |team, projects|
+        - projects.each do |project|
+          tr
+            td = project.id
+            td = project.name
+            td = project.picture
+            td = project.created_at
+            td = project.updated_at
+            td = link_to 'Show', project
+            - if team.present?
+              td  = team.id
+              td  = team.name
+            - else
+              td -
+              td -

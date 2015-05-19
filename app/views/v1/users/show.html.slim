@@ -1,0 +1,10 @@
+
+
+= content_for(:column_left)
+  = share_render('show_user', {user: @user, teams: @user.teams, projects: @user.projects})
+
+= content_for(:column_center)
+  - if defined?(@timeline)
+    h2 timeline
+    = share_render('index_timeline', {timeline: @timeline})
+

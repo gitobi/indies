@@ -1,0 +1,11 @@
+h2 Create Team
+
+- @team.users.each do |user|
+  p = user.name
+
+= simple_form_for @team do |f|
+  = f.input :name
+  = f.input :picture
+  = f.button :submit
+
+
