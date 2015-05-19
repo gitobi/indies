@@ -79,9 +79,16 @@ GEM
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
     ffi (1.9.8)
+    font-awesome-sass (4.3.2.1)
+      sass (~> 3.2)
     formatador (0.2.5)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    gon (5.2.3)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     guard (2.12.5)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -149,6 +156,8 @@ GEM
     omniauth-twitter (1.2.0)
       json (~> 1.3)
       omniauth-oauth (~> 1.1)
+    pagedown-bootstrap-rails (2.1.2)
+      railties (> 3.1)
     pg (0.18.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -196,6 +205,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.2.0)
     ref (1.0.5)
+    request_store (1.1.0)
     rspec (3.2.0)
       rspec-core (~> 3.2.0)
       rspec-expectations (~> 3.2.0)
@@ -296,6 +306,8 @@ DEPENDENCIES
   dotenv-rails
   execjs
   factory_girl_rails
+  font-awesome-sass
+  gon
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
@@ -304,6 +316,7 @@ DEPENDENCIES
   normalize-rails
   omniauth
   omniauth-twitter
+  pagedown-bootstrap-rails
   pg
   puma
   rails (= 4.2.1)

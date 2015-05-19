@@ -6,9 +6,13 @@ div class="row"
       = image_tag 'default-placeholder.png', alt: user.name, size: '96x96', class: 'thumbnail'
 
 - if (local_assigns.has_key? :teams) && (teams.present?)
-  h5 Teams
+  h4 Teams
   = share_render('grid_teams', {teams: teams})
+  - if current_user?
+    p = link_to 'Create New Team',    new_team_path
 
 - if (local_assigns.has_key? :projects) && (projects.present?)
-  h5 Projects
+  h4 Projects
   = share_render('grid_projects', {projects: projects})
+  - if current_user?
+    p = link_to 'Create New Project', new_project_path

@@ -3,14 +3,11 @@
 @import 'neat';
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "united";
 
-/* United
- * Bootswatch
- *= require_self
- *= require united/loader
- *= require united/bootswatch
-*/
+@import "pagedown_bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 
 $color-base:#fefefe;
 $color-sub:#333333;

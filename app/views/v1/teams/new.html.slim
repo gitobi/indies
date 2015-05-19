@@ -6,6 +6,6 @@ h2 Create Team
 = simple_form_for @team do |f|
   = f.input :name
   = f.input :picture
+  = f.input :detail, as: :pagedown, input_html: { preview: true, rows: 20 }
   = f.button :submit
-
 

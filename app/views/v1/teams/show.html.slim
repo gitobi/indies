@@ -1,15 +1,27 @@
 
-= share_render('show_team', {team: @team, users: @team.users})
+= content_for(:column_left)
+  div class="row"
+    div class="col-md-1"
+      = link_to @team do
+        = @team.name
+        = image_tag 'default-placeholder.png', alt: @team.name, size: '96x96', class: 'thumbnail'
 
+  h4 Members
+  - if contains_current_user?(@team)
+    p = link_to 'Invite New Team Member', new_team_user_path
+  = share_render('grid_users', {users: @team.users})
 
-- if defined?(@timeline)
-  h2 timeline
+= content_for(:column_center)
+  - if defined?(@timeline)
+    h4 timeline
 
-  - if defined?(@new_message)
-  = simple_form_for @new_message do |f|
-    = f.input :user_id , { as: :hidden }
-    = f.input :team_id , { as: :hidden }
-    = f.input :text
-    = f.button :submit
+    - if defined?(@new_message)
+      div class="col-md-8 well bs-component"
+        = simple_form_for(@new_message, wrapper: 'horizontal_form', html: { class: 'form-horizontal' }) do |form|
+          = form.input  :user_id , { as: :hidden }
+          = form.input  :team_id , { as: :hidden }
+          = form.input  :text
+          = form.button :submit  , 'comment'
 
-  = share_render('index_timeline', {timeline: @timeline})
+    = share_render('index_timeline', {timeline: @timeline})
+

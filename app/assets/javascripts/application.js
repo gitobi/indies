@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require united/loader
-//= require united/bootswatch
+//= require united
 
+//= require pagedown_bootstrap
+//= require pagedown_init

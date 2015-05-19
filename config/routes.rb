@@ -28,10 +28,11 @@ Rails.application.routes.draw do
     # end
 
     resources :users
-    resources :room
-    resources :teams
     resources :projects
     resources :project_messages
+    resources :project_users
+    resources :teams
     resources :team_messages
+    resources :team_users
   end
 end

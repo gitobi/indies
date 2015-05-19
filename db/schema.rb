@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150509140847) do
     t.string   "name"
     t.string   "picture"
     t.string   "comment"
-    t.string   "ditail"
+    t.string   "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20150509140847) do
     t.string   "name"
     t.string   "picture"
     t.string   "comment"
-    t.string   "ditail"
+    t.string   "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20150509140847) do
     t.string   "name"
     t.string   "picture"
     t.string   "comment"
-    t.string   "ditail"
+    t.string   "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

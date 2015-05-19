@@ -1,4 +1,4 @@
-class V1::RoomsController < V1::BaseController
+class V1::ProjectUsersController < V1::BaseController
 
   def new
     model_instance = new_model
@@ -8,9 +8,8 @@ class V1::RoomsController < V1::BaseController
 
   def create
     result, model_instance = create_model(params)
-    model_instance.users << @logedin_user
     model_instance.save
-    redirect_to action: 'show', id: model_instance.id
+    redirect_to controller: 'projects', action: 'show', id: model_instance.project.id
 
   end
 

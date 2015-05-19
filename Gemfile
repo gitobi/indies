@@ -13,6 +13,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'gon'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -41,6 +43,10 @@ gem 'less-rails'
 #bin/rails g bootswatch:install united
 #bin/rails g bootswatch:import united
 #bin/rails g bootswatch:layout united
+
+# markdown
+gem 'pagedown-bootstrap-rails'
+gem 'font-awesome-sass'
 
 # testing
 gem 'factory_girl_rails'

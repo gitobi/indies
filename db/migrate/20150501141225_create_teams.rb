@@ -5,7 +5,7 @@ class CreateTeams < ActiveRecord::Migration
       t.string :name
       t.string :picture
       t.string :comment
-      t.string :ditail
+      t.string :detail
 
       t.timestamps null: false
     end

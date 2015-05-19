@@ -1,9 +1,9 @@
 
-- if local_assigns.has_key? :teams
+- if local_assigns.has_key? :users
   - column = 0
-  div class="grid-teams"
+  div class="grid-users"
     <div class="row">
-    - teams.each do |item|
+    - users.each do |item|
       - column = column + 1
       - if 3 < column
         </div>
