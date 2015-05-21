@@ -43,7 +43,11 @@ module Crudable
 
     # argsから、モデルに存在するカラムのみを抽出して返却する
     def self.filter_model_params(args)
-      args.require(model_class.model_to_s_underscore.intern).permit(model_class.column_symbols)
+      p "debug"
+      p args
+      require_args = args.require(model_class.model_to_s_underscore.intern).permit(model_class.column_symbols)
+      p require_args
+      return require_args
     end
 
     # where句に以下を含める

@@ -3,6 +3,7 @@ class CreateProjectMessages < ActiveRecord::Migration
     create_table :project_messages, id: :uuid  do |t|
       t.uuid    :project_id
       t.uuid    :user_id
+      t.string  :scope
       t.string  :text
 
       t.timestamps null: false

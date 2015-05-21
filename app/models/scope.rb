@@ -1,2 +1,0 @@
-class Scope < BaseModel
-end

@@ -8,6 +8,11 @@ module Accountable
 
     private
 
+    def permit_scopes
+      scopes_all = Scope.all
+      # permit_scopes = scopes_all.where(name: ["public", "private"])
+      permit_scopes = scopes_all.where(name: "public")
+    end
 
     def logedin?
       nil != @logedin_account_id
@@ -18,7 +23,12 @@ module Accountable
         return false
       end
 
-      user_id = nil != user ? user.id : params[:id]
+      if nil != user
+        user_id = user.id
+      else
+        user_id = params[:id]
+      end
+
       user_id == @logedin_user.id
     end
 
@@ -63,6 +73,7 @@ module Accountable
         return false
 
       else
+        reset_session
         token = SecureRandom.uuid
         account.token = token
         account.save!
@@ -76,8 +87,7 @@ module Accountable
     end
 
     def logout_account
-      session[:logedin_account_id]    = nil
-      session[:logedin_account_token] = nil
+      reset_session
       set_logedin_infos
 
     end

@@ -1,5 +1,36 @@
 class V1::UsersController < V1::BaseController
 
+  def etid
+    unless current_user?
+      home
+      return
+    end
+
+    @user = User.preload(:roles, :teams, :projects).find(@logedin_user.id)
+    model_instance = @user
+    common_edit(model_instance)
+  end
+
+  def update
+    unless current_user?
+      home
+      return
+    end
+
+    @user = User.preload(:roles, :teams, :projects).find(@logedin_user.id)
+    if @user.update_roles(params)
+      p "roles_updated!"
+      # @user.reload
+    end
+
+    result, model_instance = update_model(@user, params)
+    if result
+      redirect_to user_path(@user)
+    else
+      render 'edit'
+    end
+  end
+
   def show
     unless current_user?
       super
@@ -7,9 +38,10 @@ class V1::UsersController < V1::BaseController
     end
 
     user_id = params[:id]
-    @user = User.preload(:teams, :projects).find(user_id)
+    @user = User.preload(:roles, :teams, :projects).find(user_id)
     model_instance = @user
 
+    p "debug : " + @user.detail
     # p "debug"
     # @user.teams.each { |team|
     #   team.team_messages.each { |message|

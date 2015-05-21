@@ -4,6 +4,9 @@ module Restable
 
   included do
 
+    def home
+      redirect_to root_path
+    end
 
     def index
       model_instances = get_models
@@ -39,7 +42,7 @@ module Restable
     end
 
     def edit
-      # TODO カラム一覧でも返却する？
+
       show
     end
 
@@ -74,6 +77,14 @@ module Restable
         end
       end
       common_show model_instance
+    end
+
+    def common_edit(model_instance)
+      if model_instance.blank?
+        record_not_found
+      else
+        common_render model_instance
+      end
     end
 
     def common_index(model_instances)

@@ -50,6 +50,10 @@ module Modelable
     # update 対象は @foo_bar に格納される
     def update_model(args)
       model_instance = get_model_by_id
+      update_model(model_instance, args)
+    end
+
+    def update_model(model_instance, args)
       return [false, nil] if model_instance.blank?
       return [model_instance.common_update(args), model_instance]
     end

@@ -1,10 +1,10 @@
 class Project < BaseModel
 
-  has_many :relation_project_users
+  has_many :project_users
   has_many :project_messages, -> { preload [:user] }
 
   has_many :messages, class_name: 'ProjectMessage'
-  has_many :users,    :through => :relation_project_users
+  has_many :users,    :through => :project_users
 
   # def users
   #   parent_members.select { |item| item.child.type == "User" }.map { |item| item.child }

@@ -15,6 +15,11 @@ class V1::TeamsController < V1::BaseController
   end
 
 
+  def index
+    @teams = Team.where(scope: "public")
+    model_instances = @teams
+    common_index model_instances
+  end
 
   def show
 

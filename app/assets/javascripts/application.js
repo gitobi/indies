@@ -11,10 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
-//= require united
 
 //= require pagedown_bootstrap
 //= require pagedown_init
+//= require custom_markdown
+
+//= require common
+//= require turbolinks

@@ -1,4 +1,7 @@
 module ApplicationHelper
+
+  include MarkdownHelper
+
   def view_version
     "#{@view_version}"
   end
@@ -31,5 +34,6 @@ module ApplicationHelper
     end
     return false
   end
+
 
 end

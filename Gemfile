@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -47,11 +48,14 @@ gem 'less-rails'
 # markdown
 gem 'pagedown-bootstrap-rails'
 gem 'font-awesome-sass'
+gem "redcarpet"
 
 # testing
 gem 'factory_girl_rails'
 gem 'seed-fu'
 
+### account / sessions
+gem 'activerecord-session_store'
 # omniauth
 gem 'omniauth'
 gem 'omniauth-twitter'
@@ -70,6 +74,8 @@ group :development do
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
   gem 'rails-footnotes'
+
+  #debug
   gem "bullet"
 end
 

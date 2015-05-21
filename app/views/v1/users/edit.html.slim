@@ -1,0 +1,15 @@
+
+
+= content_for(:column_left)
+  = share_render('show_user', {user: @user, teams: @user.teams, projects: @user.projects})
+
+= content_for(:column_center)
+  = simple_form_for(@user, html: { class: 'form-horizontal' }) do |form|
+    = form.input :name    , wrapper: :horizontal_form
+    = form.input :scope   , wrapper: :horizontal_form , collection: ["public", "private"] , :include_blank => false
+    = form.input :picture , wrapper: :horizontal_form
+    = form.input :comment , wrapper: :horizontal_form
+    = form.association :roles , wrapper: :horizontal_radio_and_checkboxes, as: :check_boxes , :include_blank => false
+    = form.input :detail, as: :pagedown, input_html: { preview: true, rows: 10 }
+    = form.button :submit
+
