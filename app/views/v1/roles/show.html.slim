@@ -1,0 +1,13 @@
+
+= content_for(:column_left)
+    div class="row"
+      div class="col-md-1"
+        - @roles.each do |role|
+          p = link_to role.name, role, class: "btn btn-info btn-xs"
+
+= content_for(:column_center)
+  div class="row"
+    = link_to @role.name, @role, class: "btn btn-info"
+
+  - if @joined_role.present?
+    = share_render('index_users', {users: @joined_role.users})

@@ -5,9 +5,8 @@ div class="row"
       = user.name
       = image_tag 'default-placeholder.png', alt: user.name, size: '96x96', class: 'thumbnail'
 div class="row"
-  div class="col-md-1"
-    - user.roles.each do |role|
-      span class="label label-info" = role.name
+  - user.roles.each do |role|
+    = link_to role.name, role, class: "btn btn-info btn-xs"
 
 - if (local_assigns.has_key? :teams) && (teams.present?)
   h4 Teams

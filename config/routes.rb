@@ -17,6 +17,19 @@ Rails.application.routes.draw do
     end
 
     resources :search, only: [:index, :show, :search]
+    resources :roles
+
+    resources :users
+    resources :projects
+    resources :project_messages
+    resources :project_users
+    resources :teams
+    resources :team_messages
+    resources :team_users
+
+
+
+
     # scope :users do
     #   users get    ''                     => 'users#index',                                 as: :users_index
     #   get    ':major,:minor'        => 'users#show_by_major_and_minor',               as: :users_show_by_major_and_minor
@@ -27,12 +40,5 @@ Rails.application.routes.draw do
     #   delete ''                     => 'users#destroy',                               as: :users_destroy
     # end
 
-    resources :users
-    resources :projects
-    resources :project_messages
-    resources :project_users
-    resources :teams
-    resources :team_messages
-    resources :team_users
   end
 end

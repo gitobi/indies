@@ -61,7 +61,7 @@ class User < BaseModel
     now_role_ids = user_roles.pluck("role_id")
     need_create_role_ids = new_role_ids - now_role_ids
     need_delete_role_ids = now_role_ids - new_role_ids
-    if (need_create_role_ids.blank?) || (need_delete_role_ids.blank?)
+    if (need_create_role_ids.blank?) && (need_delete_role_ids.blank?)
       return false
     end
 
